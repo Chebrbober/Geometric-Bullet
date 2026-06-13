@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://e0tmh77gscs7" path="res://entities/player/player.tscn" id="1_ss5j8"]
 [ext_resource type="Texture2D" uid="uid://l3nnv431oecp" path="res://stages/game/tileset.png" id="3_dp28g"]
 [ext_resource type="Script" uid="uid://xyemhd468yot" path="res://stages/game/sub_viewport.gd" id="4_c2cke"]
+[ext_resource type="PackedScene" uid="uid://sp88h86xw5qa" path="res://entities/enemies/cube_enemy/cube_enemy.tscn" id="5_6gq3l"]
 
 [sub_resource type="Environment" id="Environment_0hxrk"]
 background_mode = 3
@@ -79,3 +80,6 @@ zoom = Vector2(0.2, 0.2)
 [node name="Line2D" type="Line2D" parent="CanvasLayer/SubViewportContainer" unique_id=1103090087]
 points = PackedVector2Array(5, 251, 251, 251, 251, 5, 5, 5)
 closed = true
+
+[node name="CubeEnemy" parent="." unique_id=1154238197 instance=ExtResource("5_6gq3l")]
+position = Vector2(382, 189)

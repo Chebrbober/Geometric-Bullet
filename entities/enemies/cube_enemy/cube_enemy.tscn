@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://sp88h86xw5qa"]
+
+[ext_resource type="Script" uid="uid://dvy3skbq6v76n" path="res://entities/enemies/cube_enemy/cube_enemy.gd" id="1_0i51t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8wq"]
+size = Vector2(16, 16)
+
+[node name="CubeEnemy" type="CharacterBody2D" unique_id=1154238197 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_0i51t")
+speed = 75.0
+hp = 10
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=640375528]
+color = Color(0.9647059, 0.08235294, 0, 1)
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1088213133]
+shape = SubResource("RectangleShape2D_4j8wq")
+
+[node name="ReloadSpeedTimer" type="Timer" parent="." unique_id=689147934]

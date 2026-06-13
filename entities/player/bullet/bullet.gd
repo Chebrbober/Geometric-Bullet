@@ -1,16 +1,19 @@
+class_name Bullet
 extends Polygon2D
 
 @onready var area_2d: Area2D = $Area2D
 
-
 var velocity = Vector2(1,0)
 var speed = 250
-
 var look_once = true
+var target_position: Vector2 = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	if look_once:
-		look_at(get_global_mouse_position())
+		if target_position != Vector2.ZERO:
+			look_at(target_position)
+		else:
+			look_at(get_global_mouse_position())
 		look_once = false
 	global_position += velocity.rotated(rotation) * speed * delta
 
