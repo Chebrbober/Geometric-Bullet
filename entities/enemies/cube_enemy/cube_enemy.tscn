@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dvy3skbq6v76n" path="res://entities/enemies/cube_enemy/cube_enemy.gd" id="1_0i51t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8wq"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0i51t"]
 
 [node name="CubeEnemy" type="CharacterBody2D" unique_id=1154238197 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 1.6074482
 script = ExtResource("1_0i51t")
 speed = 75.0
 hp = 10
@@ -17,6 +21,15 @@ color = Color(0.9647059, 0.08235294, 0, 1)
 polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1088213133]
-shape = SubResource("RectangleShape2D_4j8wq")
+shape = SubResource("CircleShape2D_0i51t")
 
 [node name="ReloadSpeedTimer" type="Timer" parent="." unique_id=689147934]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1867525500]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=106729751]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

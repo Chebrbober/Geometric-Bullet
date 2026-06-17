@@ -15,6 +15,12 @@ adjustment_contrast = 1.15
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_0hxrk"]
 auto_exposure_enabled = true
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6gq3l"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2cke"]
 texture = ExtResource("3_dp28g")
 texture_region_size = Vector2i(32, 32)
@@ -29,6 +35,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6gq3l")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
@@ -39,6 +46,7 @@ physics_layer_0/collision_mask = 15
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_c2cke")
 
 [node name="Arena" type="Node2D" unique_id=1772455464]
