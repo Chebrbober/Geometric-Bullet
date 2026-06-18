@@ -22,5 +22,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("enemies"):
-		body.take_damage(1)
+		body.take_damage(NodeSpawner.player.damage)
+		body.modulate = Color.WHITE
+		velocity = -velocity * 6
+		speed = 0
 	queue_free()

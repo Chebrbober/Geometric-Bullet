@@ -1,8 +1,9 @@
 class_name Player
 extends Entity
 
-@export var bullet: PackedScene
 @onready var reload_speed_timer: Timer = $ReloadSpeedTimer
+@export var bullet: PackedScene
+@export var damage: int = 1
 
 var can_shoot: bool = true
 
