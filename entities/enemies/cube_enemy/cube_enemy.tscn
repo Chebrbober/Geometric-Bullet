@@ -4,10 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://cidujj1df71d4" path="res://entities/entity.tscn" id="1_602vv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_602vv"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42jos"]
 
 [node name="CubeEnemy" unique_id=1118549784 groups=["entities"] instance=ExtResource("1_602vv")]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_0i51t")
@@ -24,8 +27,20 @@ shape = SubResource("CircleShape2D_602vv")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2" unique_id=883709038]
 debug_enabled = true
 
-[node name="Timer" type="Timer" parent="." index="4" unique_id=420039223]
+[node name="AttackArea" type="Area2D" parent="." index="3" unique_id=158472716]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0" unique_id=1921863181]
+shape = SubResource("CircleShape2D_42jos")
+debug_color = Color(0.95686275, 0.38039216, 1, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." index="5" unique_id=420039223]
 wait_time = 0.1
 autostart = true
 
+[node name="AttackTimer" type="Timer" parent="." index="6" unique_id=1854231651]
+one_shot = true
+
+[connection signal="body_shape_entered" from="AttackArea" to="." method="_on_attack_area_body_shape_entered"]
+[connection signal="body_shape_exited" from="AttackArea" to="." method="_on_attack_area_body_shape_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

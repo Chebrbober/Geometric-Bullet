@@ -7,6 +7,6 @@ func _ready() -> void:
 	world_2d = get_tree().root.world_2d
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	camera_2d.position = player.position
+	if is_instance_valid(player):
+		camera_2d.position = player.position
