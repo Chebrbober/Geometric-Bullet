@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cj77nbyfou155" path="res://entities/player/player.tscn" id="1_ss5j8"]
 [ext_resource type="Texture2D" uid="uid://l3nnv431oecp" path="res://stages/game/tileset.png" id="3_dp28g"]
 [ext_resource type="Script" uid="uid://xyemhd468yot" path="res://stages/game/sub_viewport.gd" id="4_c2cke"]
+[ext_resource type="Script" uid="uid://d1fvas6wvaprb" path="res://stages/game/score_label.gd" id="4_ykhqw"]
 [ext_resource type="PackedScene" uid="uid://m14ui5weian5" path="res://entities/enemies/cube_enemy/cube_enemy.tscn" id="5_6gq3l"]
+[ext_resource type="Script" uid="uid://dwqre4tmd1ds0" path="res://entities/wave_manager.gd" id="7_nukx0"]
+[ext_resource type="PackedScene" uid="uid://biiyui48anhd" path="res://entities/enemies/cube_enemy/mini_cube_enemy.tscn" id="8_u4cnq"]
 
 [sub_resource type="Environment" id="Environment_0hxrk"]
 background_mode = 3
@@ -55,9 +58,11 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_c2cke")
 
+[sub_resource type="LabelSettings" id="LabelSettings_6gq3l"]
+font_size = 32
+
 [node name="Arena" type="Node2D" unique_id=1772455464]
 script = ExtResource("1_0hxrk")
-enemy = ExtResource("5_6gq3l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=873573257]
 environment = SubResource("Environment_0hxrk")
@@ -68,6 +73,25 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAmAB0AAAABAAAAAAAmABwAAAAAAAA
 tile_set = SubResource("TileSet_6gq3l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1867960470]
+layer = 7
+
+[node name="Control" type="PanelContainer" parent="CanvasLayer" unique_id=1798032174]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 10.0
+offset_right = 25.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control" unique_id=1959128147]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_6gq3l")
+horizontal_alignment = 1
+script = ExtResource("4_ykhqw")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1228014425]
 anchors_preset = -1
@@ -92,16 +116,16 @@ zoom = Vector2(0.2, 0.2)
 points = PackedVector2Array(5, 251, 251, 251, 251, 5, 5, 5)
 closed = true
 
-[node name="CubeEnemy" parent="." unique_id=1154238197 instance=ExtResource("5_6gq3l")]
-position = Vector2(382, 189)
-
-[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1626784594]
-wait_time = 2.0
-autostart = true
-
 [node name="Player" parent="." unique_id=1118549784 instance=ExtResource("1_ss5j8")]
 unique_name_in_owner = true
-top_level = false
+z_index = 0
 position = Vector2(640, 480)
 
-[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[node name="WaveManager" type="Node" parent="." unique_id=2082375003]
+unique_name_in_owner = true
+script = ExtResource("7_nukx0")
+enemy_types = Array[PackedScene]([ExtResource("5_6gq3l"), ExtResource("8_u4cnq")])
+spawnable_enemies = Array[PackedScene]([ExtResource("5_6gq3l")])
+
+[connection signal="wave_completed" from="WaveManager" to="." method="_on_wave_completed"]
+[connection signal="wave_started" from="WaveManager" to="." method="_on_wave_started"]

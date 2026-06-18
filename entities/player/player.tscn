@@ -9,6 +9,8 @@ size = Vector2(18, 18)
 
 [node name="Player" unique_id=1118549784 instance=ExtResource("1_abrql")]
 collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_symyc")
 bullet = ExtResource("2_abrql")
 damage = 1
@@ -27,6 +29,6 @@ position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
 
 [node name="ReloadSpeedTimer" type="Timer" parent="." index="4" unique_id=1392139072]
-wait_time = 0.25
+wait_time = 0.5
 
 [connection signal="timeout" from="ReloadSpeedTimer" to="." method="_on_reload_speed_timer_timeout"]

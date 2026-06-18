@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-NodeSpawner="*uid://bcytenika852k"
+Global="*uid://bcytenika852k"
 
 [display]
 

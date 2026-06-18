@@ -21,6 +21,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body.is_in_group("entities"):
-		body.take_damage(NodeSpawner.player.damage)
+	if body.is_in_group("entities") and is_instance_valid(body):
+		body.take_damage(Global.player.damage)
 	queue_free()

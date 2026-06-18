@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cidujj1df71d4" path="res://entities/entity.tscn" id="1_602vv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_602vv"]
+resource_local_to_scene = true
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42jos"]
+resource_local_to_scene = true
 
 [node name="CubeEnemy" unique_id=1118549784 groups=["entities"] instance=ExtResource("1_602vv")]
 collision_layer = 2
@@ -14,8 +16,9 @@ collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_0i51t")
-speed = 75.0
+speed = 50.0
 hp = 10
+damage = 5
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 color = Color(1, 0, 0, 1)
@@ -25,7 +28,6 @@ polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
 shape = SubResource("CircleShape2D_602vv")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2" unique_id=883709038]
-debug_enabled = true
 
 [node name="AttackArea" type="Area2D" parent="." index="3" unique_id=158472716]
 

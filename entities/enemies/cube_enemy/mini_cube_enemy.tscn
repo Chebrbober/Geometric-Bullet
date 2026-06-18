@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://biiyui48anhd"]
+
+[ext_resource type="PackedScene" uid="uid://m14ui5weian5" path="res://entities/enemies/cube_enemy/cube_enemy.tscn" id="1_njewc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ao6w0"]
+resource_local_to_scene = true
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njewc"]
+radius = 4.0
+
+[node name="MiniCubeEnemy" unique_id=1118549784 instance=ExtResource("1_njewc")]
+spawn_rate = 0.8
+speed = 75.0
+hp = 5
+damage = 2
+
+[node name="Polygon2D" parent="." index="0" unique_id=1340460375]
+position = Vector2(4, 4)
+polygon = PackedVector2Array(-7.9921417, -8.11895, -8, 0, 0, 0, 0, -8)
+uv = PackedVector2Array(-8.163261, -7.970496, -8.203125, 6.3984375, 8.552383, 6.4296207, 8.543785, -7.970496)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2031196477]
+shape = SubResource("CircleShape2D_ao6w0")
+
+[node name="CollisionShape2D" parent="AttackArea" parent_id_path=PackedInt32Array(158472716) index="0" unique_id=1921863181]
+shape = SubResource("CircleShape2D_njewc")
