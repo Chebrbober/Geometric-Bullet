@@ -13,7 +13,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_symyc")
 bullet = ExtResource("2_abrql")
-damage = 1
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 color = Color(0, 0.6627451, 1, 1)

@@ -9,7 +9,7 @@ var spawner: Node2D
 @export var spawnable_enemies: Array[PackedScene]
 
 var current_wave: int = starting_wave
-var enemies_to_spawn: int
+var enemies_to_spawn: int = 3
 var spawn_timer: float
 var current_spawn_interval: float = initial_spawn_interval
 var _is_initializng_wave: bool = false
