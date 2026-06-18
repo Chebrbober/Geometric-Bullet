@@ -5,16 +5,21 @@ extends CharacterBody2D
 @export var hp: int = 100
 @export var blood_particles: PackedScene
 @onready var stun_timer: Timer = $StunTimer
-var native_modulate: Color = modulate
+@onready var polygon2d: Polygon2D = $Polygon2D
+@onready var native_color: Color = polygon2d.color
+var tween: Tween
 
 signal died
 
 func take_damage(amount: int) -> void:
 	hp -= amount
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(polygon2d, "color", Color.WHITE, 0.05)
+	stun_timer.start()
 	if hp <= 0:
 		die()
-	modulate = Color.WHITE
-	stun_timer.start()
 
 func die() -> void:
 	if NodeSpawner.node_creation_parent != null:
@@ -24,4 +29,7 @@ func die() -> void:
 	emit_signal("died")
 
 func _on_stun_timer_timeout() -> void:
-	modulate = native_modulate
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(polygon2d, "color", native_color, 0.05)

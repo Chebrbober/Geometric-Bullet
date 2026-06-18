@@ -29,7 +29,7 @@ project/assembly_name="Cactopon"
 
 [global_group]
 
-enemies=""
+entities=""
 
 [input]
 
