@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b5ayew4bavuqw"]
 
 [ext_resource type="Script" uid="uid://8735220vxlj7" path="res://stages/game/arena.gd" id="1_0hxrk"]
-[ext_resource type="PackedScene" uid="uid://e0tmh77gscs7" path="res://entities/player/player.tscn" id="1_ss5j8"]
+[ext_resource type="PackedScene" uid="uid://cj77nbyfou155" path="res://entities/player/player.tscn" id="1_ss5j8"]
 [ext_resource type="Texture2D" uid="uid://l3nnv431oecp" path="res://stages/game/tileset.png" id="3_dp28g"]
 [ext_resource type="Script" uid="uid://xyemhd468yot" path="res://stages/game/sub_viewport.gd" id="4_c2cke"]
 [ext_resource type="PackedScene" uid="uid://sp88h86xw5qa" path="res://entities/enemies/cube_enemy/cube_enemy.tscn" id="5_6gq3l"]
@@ -53,10 +53,6 @@ sources/0 = SubResource("TileSetAtlasSource_c2cke")
 script = ExtResource("1_0hxrk")
 enemy = ExtResource("5_6gq3l")
 
-[node name="Player" parent="." unique_id=1593354995 instance=ExtResource("1_ss5j8")]
-unique_name_in_owner = true
-position = Vector2(640, 480)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=873573257]
 environment = SubResource("Environment_0hxrk")
 camera_attributes = SubResource("CameraAttributesPhysical_0hxrk")
@@ -96,5 +92,9 @@ position = Vector2(382, 189)
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1626784594]
 wait_time = 2.0
 autostart = true
+
+[node name="Player" parent="." unique_id=1118549784 instance=ExtResource("1_ss5j8")]
+unique_name_in_owner = true
+position = Vector2(640, 480)
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

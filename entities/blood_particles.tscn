@@ -6,15 +6,15 @@
 [node name="BloodParticles" type="CPUParticles2D" unique_id=583339663]
 amount = 20
 texture = ExtResource("1_nbij3")
-lifetime = 0.2
-speed_scale = 1.2
+lifetime = 0.4
+speed_scale = 2.0
 explosiveness = 0.96
 emission_shape = 1
 emission_sphere_radius = 18.17
 spread = 166.15
 gravity = Vector2(0, 0)
-initial_velocity_min = 177.89
-initial_velocity_max = 231.99
+initial_velocity_min = 31.75
+initial_velocity_max = 109.9
 scale_amount_min = 0.01
 scale_amount_max = 0.02
 color = Color(1, 0.101960786, 0, 0.68235296)

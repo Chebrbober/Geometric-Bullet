@@ -4,10 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://dlq3etlqanmbc" path="res://entities/blood_particles.tscn" id="2_ep4xq"]
 
 [node name="Entity" type="CharacterBody2D" unique_id=1118549784]
-position = Vector2(0, 4)
+top_level = true
 script = ExtResource("1_jm4vq")
 blood_particles = ExtResource("2_ep4xq")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1340460375]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2031196477]
+
+[node name="StunTimer" type="Timer" parent="." unique_id=970213376]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

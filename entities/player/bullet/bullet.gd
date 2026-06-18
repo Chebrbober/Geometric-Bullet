@@ -24,6 +24,4 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 	if body.is_in_group("enemies"):
 		body.take_damage(NodeSpawner.player.damage)
 		body.modulate = Color.WHITE
-		velocity = -velocity * 6
-		speed = 0
 	queue_free()

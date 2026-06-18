@@ -1,36 +1,32 @@
-[gd_scene format=3 uid="uid://e0tmh77gscs7"]
+[gd_scene format=3 uid="uid://cj77nbyfou155"]
 
+[ext_resource type="PackedScene" uid="uid://cidujj1df71d4" path="res://entities/entity.tscn" id="1_abrql"]
 [ext_resource type="Script" uid="uid://bko7agf3mofn7" path="res://entities/player/player.gd" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://bo53s6r3ew2pw" path="res://entities/player/bullet/bullet.tscn" id="2_abrql"]
-[ext_resource type="PackedScene" uid="uid://dlq3etlqanmbc" path="res://entities/blood_particles.tscn" id="3_sglur"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbpnk"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfe5m"]
+size = Vector2(18, 18)
 
-[node name="Player" type="CharacterBody2D" unique_id=1593354995]
-top_level = true
-collision_mask = 7
-motion_mode = 1
-wall_min_slide_angle = 0.0
-floor_max_angle = 1.6126842
+[node name="Player" unique_id=1118549784 instance=ExtResource("1_abrql")]
+collision_mask = 15
 script = ExtResource("1_symyc")
 bullet = ExtResource("2_abrql")
-blood_particles = ExtResource("3_sglur")
+damage = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1715562052]
-color = Color(0, 0.75236475, 0.95044476, 1)
+[node name="Polygon2D" parent="." index="0" unique_id=1340460375]
+color = Color(0, 0.6627451, 1, 1)
 polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908035418]
-shape = SubResource("RectangleShape2D_qbpnk")
+[node name="CollisionShape2D" parent="." index="1" unique_id=2031196477]
+shape = SubResource("RectangleShape2D_rfe5m")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=940852305]
+[node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=1592504992]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
 
-[node name="ReloadSpeedTimer" type="Timer" parent="." unique_id=1715331713]
+[node name="ReloadSpeedTimer" type="Timer" parent="." index="4" unique_id=1392139072]
 wait_time = 0.25
 
-[connection signal="timeout" from="ReloadSpeedTimer" to="." method="_on_reload_speed_timeout"]
+[connection signal="timeout" from="ReloadSpeedTimer" to="." method="_on_reload_speed_timer_timeout"]

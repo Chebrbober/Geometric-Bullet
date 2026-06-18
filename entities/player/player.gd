@@ -23,5 +23,7 @@ func _physics_process(delta: float) -> void:
 		reload_speed_timer.start()
 		can_shoot = false
 	
-func _on_reload_speed_timeout() -> void:
+func _on_reload_speed_timer_timeout() -> void:
 	can_shoot = true
+
+
