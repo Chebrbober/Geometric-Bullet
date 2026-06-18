@@ -24,6 +24,7 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	if NodeSpawner.node_creation_parent != null:
 		var blood_particles_instance = NodeSpawner.instance_node(blood_particles, global_position, NodeSpawner.node_creation_parent)
+		blood_particles_instance.color = polygon2d.color
 		blood_particles_instance.rotation = velocity.angle()
 	queue_free()
 	emit_signal("died")
