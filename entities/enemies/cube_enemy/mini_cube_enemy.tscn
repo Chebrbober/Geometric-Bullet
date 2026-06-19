@@ -11,7 +11,7 @@ radius = 4.0
 
 [node name="MiniCubeEnemy" unique_id=1118549784 instance=ExtResource("1_njewc")]
 spawn_rate = 0.8
-speed = 75.0
+speed = 90.0
 hp = 5
 damage = 2
 

@@ -63,7 +63,7 @@ func _complete_wave() -> void:
 	wave_completed.emit(current_wave)
 	Global.current_wave += 1
 	_start_new_wave()
-	if current_wave % 3 == 0 and spawnable_enemy_index < enemy_types.size():
+	if current_wave % 3 == 0 and spawnable_enemy_index != enemy_types.size() - 1:
 		spawnable_enemy_index += 1
 		_add_spawnable_enemy(enemy_types[spawnable_enemy_index])
 
