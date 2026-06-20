@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bdmuuk04pr2nl"]
+
+[ext_resource type="Script" uid="uid://pq3etwpln0fy" path="res://stages/game/upgrade.gd" id="1_eg8is"]
+
+[resource]
+script = ExtResource("1_eg8is")
+name = "Augmented"
+description = "+10% to the current damage"
+stat_type = "damage"
+cost = 5
+rarity = "Common"
+value = 1.1
+metadata/_custom_type_script = "uid://pq3etwpln0fy"
