@@ -16,8 +16,9 @@ collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_0i51t")
+spawn_rate = 1.0
 speed = 50.0
-hp = 10
+max_health = 10
 damage = 5
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]

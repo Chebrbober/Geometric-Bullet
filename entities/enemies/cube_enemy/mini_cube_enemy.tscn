@@ -12,12 +12,12 @@ radius = 4.0
 [node name="MiniCubeEnemy" unique_id=1118549784 instance=ExtResource("1_njewc")]
 spawn_rate = 0.8
 speed = 90.0
-hp = 5
+max_health = 7
 damage = 2
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 position = Vector2(4, 4)
-polygon = PackedVector2Array(-7.9921417, -8.11895, -8, 0, 0, 0, 0, -8)
+polygon = PackedVector2Array(-7.9921417, -8.11895, -8, 0, 0, 0, 0.00013589859, -8.118457)
 uv = PackedVector2Array(-8.163261, -7.970496, -8.203125, 6.3984375, 8.552383, 6.4296207, 8.543785, -7.970496)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=2031196477]

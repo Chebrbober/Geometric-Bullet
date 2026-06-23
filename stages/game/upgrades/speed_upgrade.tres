@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cn0l7r0aogbcy"]
+
+[ext_resource type="Script" uid="uid://pq3etwpln0fy" path="res://stages/game/upgrade.gd" id="1_atuny"]
+
+[resource]
+script = ExtResource("1_atuny")
+name = "Boots"
+description = "Gives +10% to the current speed"
+stat_type = "speed"
+cost = 3
+rarity = "Common"
+value = 1.1
+metadata/_custom_type_script = "uid://pq3etwpln0fy"

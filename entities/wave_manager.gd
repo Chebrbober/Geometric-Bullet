@@ -64,6 +64,8 @@ func _complete_wave() -> void:
 	Global.current_wave += 1
 	_start_new_wave()
 	if current_wave % 3 == 0 and spawnable_enemy_index != enemy_types.size() - 1:
+		get_tree().paused = true
+		get_parent().get_node("CanvasLayer/UpgradeScreen").visible = true
 		spawnable_enemy_index += 1
 		_add_spawnable_enemy(enemy_types[spawnable_enemy_index])
 

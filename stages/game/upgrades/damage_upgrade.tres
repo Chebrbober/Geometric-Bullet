@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bdmuuk04pr2nl"]
 
-[ext_resource type="Script" uid="uid://pq3etwpln0fy" path="res://stages/game/upgrade.gd" id="1_eg8is"]
+[ext_resource type="Script" uid="uid://pq3etwpln0fy" path="res://stages/game/upgrade.gd" id="1_cff5y"]
 
 [resource]
-script = ExtResource("1_eg8is")
+script = ExtResource("1_cff5y")
 name = "Augmented"
-description = "+10% to the current damage"
+description = "Gives +10% to the current damage"
 stat_type = "damage"
 cost = 5
 rarity = "Common"

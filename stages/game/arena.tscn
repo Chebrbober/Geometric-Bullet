@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://m14ui5weian5" path="res://entities/enemies/cube_enemy/cube_enemy.tscn" id="5_6gq3l"]
 [ext_resource type="Script" uid="uid://dwqre4tmd1ds0" path="res://entities/wave_manager.gd" id="7_nukx0"]
 [ext_resource type="PackedScene" uid="uid://biiyui48anhd" path="res://entities/enemies/cube_enemy/mini_cube_enemy.tscn" id="8_u4cnq"]
+[ext_resource type="PackedScene" uid="uid://6r26cclrysn" path="res://stages/game/upgrade_screen.tscn" id="9_jiu16"]
 
 [sub_resource type="Environment" id="Environment_0hxrk"]
 background_mode = 3
@@ -111,6 +112,9 @@ zoom = Vector2(0.2, 0.2)
 [node name="Line2D" type="Line2D" parent="CanvasLayer/SubViewportContainer" unique_id=1103090087]
 points = PackedVector2Array(5, 251, 251, 251, 251, 5, 5, 5)
 closed = true
+
+[node name="UpgradeScreen" parent="CanvasLayer" unique_id=1168584678 instance=ExtResource("9_jiu16")]
+visible = false
 
 [node name="Player" parent="." unique_id=1118549784 instance=ExtResource("1_ss5j8")]
 unique_name_in_owner = true

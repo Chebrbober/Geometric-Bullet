@@ -7,6 +7,7 @@ extends Entity
 var can_shoot: bool = true
 
 func _ready() -> void:
+	super._ready()
 	Global.player = self
 
 func _exit_tree() -> void:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6r26cclrysn"]
 
 [ext_resource type="Texture2D" uid="uid://l3nnv431oecp" path="res://stages/game/tileset.png" id="1_54ux1"]
+[ext_resource type="Script" uid="uid://bslsy5a3x6gf4" path="res://stages/game/upgrade_screen.gd" id="1_tudq1"]
 [ext_resource type="Script" uid="uid://dnvtkj7fuumy3" path="res://stages/game/rarity_label.gd" id="2_5ndin"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7eub8"]
@@ -10,12 +11,13 @@ font_size = 24
 font_color = Color(0.62804955, 0.62804955, 0.62804955, 1)
 
 [node name="UpgradeScreen" type="Control" unique_id=1168584678]
+process_mode = 2
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 960.0
+script = ExtResource("1_tudq1")
+upgrades_dir = "res://stages/game/upgrades"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1207797814]
 layout_mode = 1
@@ -56,26 +58,37 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=1742445195]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1072788029]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1072788029]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_54ux1")
 
 [node name="NameLabel" type="Label" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1903521081]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_7eub8")
 
 [node name="RarityLabel" type="Label" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=239090071]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Rarity"
 script = ExtResource("2_5ndin")
 
 [node name="DescriptionLabel" type="Label" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=1069610899]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Super duper very long description
 "
 label_settings = SubResource("LabelSettings_yw1su")
 
-[node name="Button" type="Button" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=424612204]
+[node name="CostLabel" type="Label" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=933094852]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectButton" type="Button" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=424612204]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Select"
+
+[connection signal="pressed" from="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]

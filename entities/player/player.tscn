@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cidujj1df71d4" path="res://entities/entity.tscn" id="1_abrql"]
 [ext_resource type="Script" uid="uid://bko7agf3mofn7" path="res://entities/player/player.gd" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://bo53s6r3ew2pw" path="res://entities/player/bullet/bullet.tscn" id="2_abrql"]
+[ext_resource type="Script" uid="uid://chqw1lp3lywgi" path="res://entities/player/stats_manager.gd" id="4_bls4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfe5m"]
 size = Vector2(18, 18)
@@ -13,6 +14,9 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_symyc")
 bullet = ExtResource("2_abrql")
+speed = 100.0
+max_health = 100
+damage = 1
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 color = Color(0, 0.6627451, 1, 1)
@@ -29,5 +33,8 @@ rotation_smoothing_enabled = true
 
 [node name="ReloadSpeedTimer" type="Timer" parent="." index="4" unique_id=1392139072]
 wait_time = 0.5
+
+[node name="StatsManager" type="Node" parent="." index="5" unique_id=761570750]
+script = ExtResource("4_bls4j")
 
 [connection signal="timeout" from="ReloadSpeedTimer" to="." method="_on_reload_speed_timer_timeout"]
