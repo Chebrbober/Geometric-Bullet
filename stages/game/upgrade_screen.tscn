@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://l3nnv431oecp" path="res://stages/game/tileset.png" id="1_54ux1"]
 [ext_resource type="Script" uid="uid://bslsy5a3x6gf4" path="res://stages/game/upgrade_screen.gd" id="1_tudq1"]
 [ext_resource type="Script" uid="uid://dnvtkj7fuumy3" path="res://stages/game/rarity_label.gd" id="2_5ndin"]
+[ext_resource type="Script" uid="uid://bgvnnm6s8ideu" path="res://stages/game/upgrade_container.gd" id="2_vsrje"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7eub8"]
 font_size = 24
@@ -26,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.09803922)
+color = Color(0, 0, 0, 0.2784314)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1595923275]
 layout_mode = 1
@@ -44,6 +45,7 @@ grow_vertical = 2
 
 [node name="UpgradeContainer" type="PanelContainer" parent="HBoxContainer" unique_id=88794880]
 layout_mode = 2
+script = ExtResource("2_vsrje")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/UpgradeContainer" unique_id=1954817596]
 layout_mode = 2
@@ -82,13 +84,9 @@ text = "Super duper very long description
 "
 label_settings = SubResource("LabelSettings_yw1su")
 
-[node name="CostLabel" type="Label" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=933094852]
-unique_name_in_owner = true
-layout_mode = 2
-
 [node name="SelectButton" type="Button" parent="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=424612204]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Select"
 
-[connection signal="pressed" from="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/SelectButton" to="HBoxContainer/UpgradeContainer" method="_on_select_button_pressed"]

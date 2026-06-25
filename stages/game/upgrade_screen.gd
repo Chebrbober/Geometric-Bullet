@@ -1,16 +1,12 @@
 extends Control
 
 @export_dir var upgrades_dir
-@onready var icon: TextureRect = %Icon 
-@onready var name_label: Label = %NameLabel
-@onready var rarity_label: Label = %RarityLabel
-@onready var desc_label: Label = %DescriptionLabel
-@onready var cost_label: Label = %CostLabel
-@onready var select_btn: Button = %SelectButton
-var upgrade: Upgrade
+@onready var upgrade_container: PanelContainer = $HBoxContainer/UpgradeContainer
+@onready var template = upgrade_container
 
 func _ready() -> void:
 	_populate_upgrades()
+	template.visible = false
 
 func _populate_upgrades() -> void:
 	if upgrades_dir == null or upgrades_dir == "":
@@ -22,7 +18,6 @@ func _populate_upgrades() -> void:
 		push_error("Failed to open upgrades_dir: %s" % upgrades_dir)
 		return
 
-	var template: Node = $HBoxContainer/UpgradeContainer
 	if template == null:
 		push_error("UpgradeContainer template not found in scene")
 		return
@@ -61,34 +56,14 @@ func _populate_upgrades() -> void:
 
 	dir.list_dir_end()
 
-	for upgrade in resources:
-		_create_upgrade_item(upgrade, template)
+	var max_display = 3
+	for i in resources.size():
+		if i >= max_display:
+			break
+		var upgrade = resources[i]
+		upgrade_container._create_upgrade_item(upgrade, template)
 
-
-func _create_upgrade_item(upgrade: Upgrade, template: Node) -> void:
-	var parent = template.get_parent()
-	var item = template.duplicate()
-	item.name = "UpgradeContainer_%s" % upgrade.name.replace(" ", "_")
-	parent.add_child(item)
-
-	if name_label:
-		name_label.text = upgrade.name if upgrade.name != null else ""
-
-	if desc_label:
-		desc_label.text = upgrade.description if upgrade.description != null else ""
-
-	if rarity_label:
-		rarity_label.text = upgrade.rarity if upgrade.rarity != null else ""
-
-	if cost_label:
-		cost_label.text = str(upgrade.cost) if upgrade.cost != null else ""
-
-	if icon and upgrade.icon:
-		icon.texture = upgrade.icon
-	item.visible = true
-
-func _on_select_button_pressed() -> void:
-	_on_upgrade_selected(upgrade)
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
 	get_tree().paused = false
+	visible = false

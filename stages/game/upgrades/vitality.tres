@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://dqly43nql0nv8"]
+
+[ext_resource type="Script" uid="uid://pq3etwpln0fy" path="res://stages/game/upgrade.gd" id="1_o7xst"]
+
+[resource]
+script = ExtResource("1_o7xst")
+name = "Vitality"
+description = "Gives +10% to the current max health"
+stat_type = "health"
+rarity = "Common"
+value = 1.1
+metadata/_custom_type_script = "uid://pq3etwpln0fy"
