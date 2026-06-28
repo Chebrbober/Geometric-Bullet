@@ -2,21 +2,21 @@ class_name Entity
 extends CharacterBody2D
 
 @export var speed: float
-@export var max_health: int
-@export var damage: int
+@export var max_health: float
+@export var damage: float
 @export var blood_particles: PackedScene
 @onready var stun_timer: Timer = $StunTimer
 @onready var polygon2d: Polygon2D = $Polygon2D
 @onready var native_color: Color = polygon2d.color
 
 var tween: Tween
-var current_hp: int
+var current_hp: float 
 
 func _ready() -> void:
 	current_hp = max_health
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	current_hp -= amount
 	if tween:
 		tween.kill()

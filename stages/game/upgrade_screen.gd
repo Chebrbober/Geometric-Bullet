@@ -60,5 +60,18 @@ func _populate_upgrades() -> void:
 
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
+	if upgrade == null:
+		push_error("No upgrade was selected")
+		return
+
+	if Global.player != null:
+		var stats_manager = Global.player.get_node_or_null("StatsManager")
+		if stats_manager != null and stats_manager.has_method("_apply_upgrade"):
+			stats_manager._apply_upgrade(upgrade)
+		else:
+			push_error("StatsManager not found on player")
+	else:
+		push_error("No player available to apply upgrade")
+
 	get_tree().paused = false
 	visible = false
