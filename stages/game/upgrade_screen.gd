@@ -25,6 +25,7 @@ func _populate_upgrades() -> void:
 	template.visible = false
 
 	var resources := []
+	var upgrades := []
 
 	dir.list_dir_begin()
 	var file = dir.get_next()
@@ -42,13 +43,7 @@ func _populate_upgrades() -> void:
 		if res:
 			if res is Upgrade:
 				resources.append(res)
-			elif res is PackedScene:
-				var inst = res.instantiate()
-				$HBoxContainer.add_child(inst)
-			elif res is Script:
-				var inst_obj = res.new()
-				if inst_obj is Upgrade:
-					resources.append(inst_obj)
+			upgrades.append(res)
 		else:
 			print("Could not load resource: %s" % path)
 
@@ -60,7 +55,7 @@ func _populate_upgrades() -> void:
 	for i in resources.size():
 		if i >= max_display:
 			break
-		var upgrade = resources[i]
+		var upgrade = upgrades[randi_range(0, upgrades.size() - 1)]
 		upgrade_container._create_upgrade_item(upgrade, template)
 
 
