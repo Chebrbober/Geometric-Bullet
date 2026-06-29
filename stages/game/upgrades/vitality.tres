@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_o7xst")
 name = "Vitality"
-description = "Gives +10% to the current max health"
+description = "Gives +15% to the current max health"
 stat_type = "health"
 rarity = "Common"
-value = 1.1
+value = 1.5
 metadata/_custom_type_script = "uid://pq3etwpln0fy"

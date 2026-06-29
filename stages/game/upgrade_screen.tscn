@@ -89,4 +89,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Select"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visible_true"]
 [connection signal="pressed" from="HBoxContainer/UpgradeContainer/MarginContainer/VBoxContainer/SelectButton" to="HBoxContainer/UpgradeContainer" method="_on_select_button_pressed"]

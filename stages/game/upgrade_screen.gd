@@ -3,6 +3,7 @@ extends Control
 @export_dir var upgrades_dir
 @onready var upgrade_container: PanelContainer = $HBoxContainer/UpgradeContainer
 @onready var template = upgrade_container
+var upgrades := []
 
 func _ready() -> void:
 	_populate_upgrades()
@@ -24,9 +25,6 @@ func _populate_upgrades() -> void:
 
 	template.visible = false
 
-	var resources := []
-	var upgrades := []
-
 	dir.list_dir_begin()
 	var file = dir.get_next()
 	
@@ -42,8 +40,7 @@ func _populate_upgrades() -> void:
 		var res = ResourceLoader.load(path)
 		if res:
 			if res is Upgrade:
-				resources.append(res)
-			upgrades.append(res)
+				upgrades.append(res)
 		else:
 			print("Could not load resource: %s" % path)
 
@@ -51,12 +48,15 @@ func _populate_upgrades() -> void:
 
 	dir.list_dir_end()
 
-	var max_display = 3
-	for i in resources.size():
-		if i >= max_display:
-			break
-		var upgrade = upgrades[randi_range(0, upgrades.size() - 1)]
-		upgrade_container._create_upgrade_item(upgrade, template)
+
+func _on_visible_true():
+	if visible == true:
+		var max_display = 3
+		for i in upgrades.size():
+			if i >= max_display:
+				break
+			var upgrade = upgrades[randi_range(0, upgrades.size() - 1)]
+			upgrade_container._create_upgrade_item(upgrade, template)
 
 
 func _on_upgrade_selected(upgrade: Upgrade) -> void:
@@ -72,6 +72,12 @@ func _on_upgrade_selected(upgrade: Upgrade) -> void:
 			push_error("StatsManager not found on player")
 	else:
 		push_error("No player available to apply upgrade")
+
+	var parent = template.get_parent()
+	if parent != null:
+		for child in parent.get_children():
+			if child != template and child is PanelContainer:
+				child.queue_free()
 
 	get_tree().paused = false
 	visible = false

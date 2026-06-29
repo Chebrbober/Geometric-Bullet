@@ -5,9 +5,8 @@
 [resource]
 script = ExtResource("1_cff5y")
 name = "Augmented"
-description = "Gives +10% to the current damage"
+description = "Gives +15% to the current damage"
 stat_type = "damage"
-cost = 5
 rarity = "Common"
-value = 1.1
+value = 1.5
 metadata/_custom_type_script = "uid://pq3etwpln0fy"

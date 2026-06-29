@@ -27,6 +27,7 @@ func _create_upgrade_item(upgrade_data: Upgrade, template: Node) -> void:
 
 	if rarity_label:
 		rarity_label.text = upgrade_data.rarity if upgrade_data.rarity != null else ""
+		rarity_label._update_color()
 
 	if icon and upgrade_data.icon:
 		icon.texture = upgrade_data.icon

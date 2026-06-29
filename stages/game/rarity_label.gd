@@ -1,16 +1,16 @@
 extends Label
 
 
-func _ready() -> void:
+func _update_color() -> void:
 	match text:
 		"Common":
-			self.add_theme_color_override("font_color", Color(1, 1, 1))
+			pass
 		"Uncommon":
-			self.add_theme_color_override("font_color", Color(0.2, 1, 0.2))
+			self.add_theme_color_override("font_color", Color(0.2, 0.8, 0.2))
 		"Rare":
-			self.add_theme_color_override("font_color", Color(0.2, 0.6, 1))
+			self.add_theme_color_override("font_color", Color(0.2, 0.6, 0.8))
 		"Epic":
-			self.add_theme_color_override("font_color", Color(0.6, 0.2, 1))
+			self.add_theme_color_override("font_color", Color(0.6, 0.2, 0.8))
 		"Legendary":
 			self.add_theme_color_override("font_color", Color(1, 0.8, 0.2))
 

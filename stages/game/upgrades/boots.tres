@@ -5,9 +5,8 @@
 [resource]
 script = ExtResource("1_atuny")
 name = "Boots"
-description = "Gives +10% to the current speed"
+description = "Gives +15% to the current speed"
 stat_type = "speed"
-cost = 3
 rarity = "Common"
-value = 1.1
+value = 1.5
 metadata/_custom_type_script = "uid://pq3etwpln0fy"
