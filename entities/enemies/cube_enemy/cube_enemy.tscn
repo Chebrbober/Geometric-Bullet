@@ -18,8 +18,8 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_0i51t")
 spawn_rate = 1.0
 speed = 50.0
-max_health = 10
-damage = 5
+max_health = 10.0
+damage = 1.0
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 color = Color(1, 0, 0, 1)

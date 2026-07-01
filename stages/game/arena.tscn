@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dwqre4tmd1ds0" path="res://entities/wave_manager.gd" id="7_nukx0"]
 [ext_resource type="PackedScene" uid="uid://biiyui48anhd" path="res://entities/enemies/cube_enemy/mini_cube_enemy.tscn" id="8_u4cnq"]
 [ext_resource type="PackedScene" uid="uid://6r26cclrysn" path="res://stages/game/upgrade_screen.tscn" id="9_jiu16"]
+[ext_resource type="PackedScene" uid="uid://bl8r4tcto1oal" path="res://entities/health_bar.tscn" id="10_pteoa"]
 
 [sub_resource type="Environment" id="Environment_0hxrk"]
 background_mode = 3
@@ -62,6 +63,11 @@ font_size = 32
 [node name="Arena" type="Node2D" unique_id=1772455464]
 script = ExtResource("1_0hxrk")
 
+[node name="Player" parent="." unique_id=1118549784 instance=ExtResource("1_ss5j8")]
+unique_name_in_owner = true
+z_index = 0
+position = Vector2(640, 480)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=873573257]
 environment = SubResource("Environment_0hxrk")
 
@@ -114,6 +120,7 @@ points = PackedVector2Array(5, 251, 251, 251, 251, 5, 5, 5)
 closed = true
 
 [node name="UpgradeScreen" parent="CanvasLayer" unique_id=1168584678 instance=ExtResource("9_jiu16")]
+process_mode = 3
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,14 +130,15 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="." unique_id=1118549784 instance=ExtResource("1_ss5j8")]
-unique_name_in_owner = true
-z_index = 0
-position = Vector2(640, 480)
+[node name="HealthBar" parent="CanvasLayer" unique_id=618635886 instance=ExtResource("10_pteoa")]
+offset_left = -250.0
+offset_right = 250.0
 
 [node name="WaveManager" type="Node" parent="." unique_id=2082375003]
 unique_name_in_owner = true
 script = ExtResource("7_nukx0")
+starting_wave = null
+initial_spawn_interval = null
 enemy_types = Array[PackedScene]([ExtResource("5_6gq3l"), ExtResource("8_u4cnq")])
 spawnable_enemies = Array[PackedScene]([ExtResource("5_6gq3l")])
 

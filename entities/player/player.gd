@@ -4,6 +4,8 @@ extends Entity
 @onready var reload_speed_timer: Timer = $ReloadSpeedTimer
 @export var bullet: PackedScene
 
+signal hp_changed(new_hp: int, max_hp: int)
+
 var can_shoot: bool = true
 
 func _ready() -> void:
@@ -25,5 +27,9 @@ func _physics_process(delta: float) -> void:
 	
 func _on_reload_speed_timer_timeout() -> void:
 	can_shoot = true
+
+func take_damage(amount: float) -> void:
+	super.take_damage(amount)
+	emit_signal("hp_changed", current_hp, max_health)
 
 

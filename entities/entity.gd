@@ -8,13 +8,13 @@ extends CharacterBody2D
 @onready var stun_timer: Timer = $StunTimer
 @onready var polygon2d: Polygon2D = $Polygon2D
 @onready var native_color: Color = polygon2d.color
+@onready var blood_color: Color = polygon2d.color - Color(0.2, 0.2, 0.2, 0.1)
 
 var tween: Tween
 var current_hp: float 
 
 func _ready() -> void:
 	current_hp = max_health
-
 
 func take_damage(amount: float) -> void:
 	current_hp -= amount

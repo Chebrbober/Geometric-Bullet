@@ -59,16 +59,16 @@ func _spawn_enemy() -> void:
 	enemies_to_spawn -= 1
 
 func _complete_wave() -> void:
-	print('sss')
 	wave_completed.emit(current_wave)
-	Global.current_wave += 1
-	_start_new_wave()
 	if current_wave % 3 == 0:
-		get_tree().paused = true
+		get_tree().set_deferred("paused", true)
 		get_parent().get_node("CanvasLayer/UpgradeScreen").visible = true
 		if spawnable_enemy_index < enemy_types.size() - 1:
 			spawnable_enemy_index += 1
 			_add_spawnable_enemy(enemy_types[spawnable_enemy_index])
+
+	Global.current_wave += 1
+	_start_new_wave()
 
 func _get_wave_config() -> Dictionary:
 	return {
