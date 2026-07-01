@@ -23,3 +23,4 @@ func _apply_upgrade(upgrade: Upgrade) -> void:
 			player.damage *= upgrade.value
 		"reload_speed":
 			player.reload_speed_timer.wait_time /= upgrade.value
+	player.hp_changed.emit(player.current_hp, player.max_health)

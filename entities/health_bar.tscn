@@ -23,7 +23,8 @@ grow_vertical = 0
 size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_jo5lq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dguew")
-value = 20.0
+max_value = 150.0
+value = 95.0
 show_percentage = false
 script = ExtResource("1_0j5km")
 

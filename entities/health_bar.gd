@@ -10,6 +10,7 @@ func _ready() -> void:
 	value = Global.player.current_hp
 	max_value = Global.player.max_health
 
-func _on_hp_changed(new_hp: int, max_hp: int) -> void:
+func _on_hp_changed(new_hp: float, max_hp: float) -> void:
 	value = new_hp
-	hp_label.text = str(new_hp) + " / " + str(max_hp)
+	max_value = max_hp
+	hp_label.text = str(int(new_hp)) + " / " + str(int(max_hp))
