@@ -35,6 +35,9 @@ func _populate_upgrades() -> void:
 		if dir.current_is_dir():
 			file = dir.get_next()
 			continue
+		if not file.ends_with(".tres"):
+			file = dir.get_next()
+			continue
 
 		var path = upgrades_dir.rstrip("/") + "/" + file
 		var res = ResourceLoader.load(path)

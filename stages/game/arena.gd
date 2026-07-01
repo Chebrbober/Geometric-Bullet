@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var tile_map: TileMapLayer = $TileMapLayer
 @onready var wave_manager: WaveManager = $WaveManager
+@onready var player: CharacterBody2D = $Player
 
 func _ready() -> void:
 	Global.node_creation_parent = self
@@ -23,7 +24,9 @@ func spawn_enemy_at_random_terrain(enemy_instance: PackedScene) -> void:
 	var random_cell = terrain_cells[randi_range(0, terrain_cells.size() - 1)]
 	var world_pos = tile_map.map_to_local(random_cell)
 	
-	Global.instance_node(enemy_instance, world_pos, self)
+	var enemy = Global.instance_node(enemy_instance, world_pos, self)
+	if enemy is CubeEnemy and is_instance_valid(player):
+		enemy.target = player
 
 func get_terrain_cells() -> Array[Vector2i]:
 	var cells: Array[Vector2i] = []

@@ -78,6 +78,10 @@ tile_set = SubResource("TileSet_6gq3l")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1867960470]
 layer = 7
 
+[node name="HealthBar" parent="CanvasLayer" unique_id=618635886 instance=ExtResource("10_pteoa")]
+offset_left = -250.0
+offset_right = 250.0
+
 [node name="Control" type="PanelContainer" parent="CanvasLayer" unique_id=1798032174]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 5
@@ -122,6 +126,7 @@ closed = true
 [node name="UpgradeScreen" parent="CanvasLayer" unique_id=1168584678 instance=ExtResource("9_jiu16")]
 process_mode = 3
 visible = false
+top_level = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -129,10 +134,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HealthBar" parent="CanvasLayer" unique_id=618635886 instance=ExtResource("10_pteoa")]
-offset_left = -250.0
-offset_right = 250.0
 
 [node name="WaveManager" type="Node" parent="." unique_id=2082375003]
 unique_name_in_owner = true

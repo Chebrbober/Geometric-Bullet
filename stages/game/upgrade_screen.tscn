@@ -12,7 +12,7 @@ font_size = 24
 font_color = Color(0.62804955, 0.62804955, 0.62804955, 1)
 
 [node name="UpgradeScreen" type="Control" unique_id=1168584678]
-process_mode = 2
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
@@ -30,6 +30,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.2784314)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1595923275]
+top_level = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
