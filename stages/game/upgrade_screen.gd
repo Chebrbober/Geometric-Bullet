@@ -35,8 +35,8 @@ func _populate_upgrades() -> void:
 		if dir.current_is_dir():
 			file = dir.get_next()
 			continue
-		if not file.ends_with(".tres"):
-			file = dir.get_next()
+		if file.ends_with(".remap"):
+			file = file.trim_suffix(".remap")
 			continue
 
 		var path = upgrades_dir.rstrip("/") + "/" + file
