@@ -17,6 +17,7 @@ func _exit_tree() -> void:
 
 func _physics_process(_delta: float) -> void:
 	move()
+	update_rotation()
 	if Input.is_action_pressed("shoot") and Global.node_creation_parent != null and can_shoot:
 		shoot()
 
@@ -29,6 +30,10 @@ func shoot() -> void:
 	Global.instance_node(bullet, global_position, Global.node_creation_parent)
 	reload_speed_timer.start()
 	can_shoot = false
+
+func update_rotation() -> void:
+	var mouse_position: Vector2 = get_global_mouse_position()
+	rotation = (mouse_position - global_position).angle()
 	
 func _on_reload_speed_timer_timeout() -> void:
 	can_shoot = true

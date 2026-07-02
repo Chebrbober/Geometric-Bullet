@@ -1,5 +1,4 @@
-class_name CubeEnemy
-extends Entity
+class_name CubeEnemy extends Entity
 
 @export var spawn_rate: float = 1.0
 @export var target: CharacterBody2D
@@ -10,28 +9,30 @@ var can_attack = true
 var bodies_in_area = []
 
 func _physics_process(delta: float) -> void:
-	var direction = to_local(nav_agent.get_next_path_position()).normalized()
-	if target!= null:
-		velocity = direction * speed
+	attack()
+	move()
+	makepath()
 
-	move_and_slide()
+func die() -> void:
+	super.die()
+	wave_manager.enemies_to_kill -= 1
 
-func _process(delta: float) -> void:
+func attack() -> void:
 	for body in bodies_in_area:
 		if body == target and can_attack:
 			target.take_damage(damage)
 			can_attack = false
 			attack_timer.start()
 
-func die() -> void:
-	super.die()
-	wave_manager.enemies_to_kill -= 1
+func move() -> void:
+	var direction = to_local(nav_agent.get_next_path_position()).normalized()
+	if target != null:
+		velocity = direction * speed
+		polygon2d.rotation = direction.angle()
+	move_and_slide()
 
 func makepath() -> void:
 	nav_agent.target_position = target.global_position
-
-func _on_timer_timeout() -> void:
-	makepath()
 
 func _on_attack_timer_timeout() -> void:
 	can_attack = true
