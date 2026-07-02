@@ -14,6 +14,8 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_symyc")
 bullet = ExtResource("2_abrql")
+regeneration_amount = 1.0
+regeneration_interval = null
 speed = 100.0
 max_health = 100.0
 damage = 1.0
@@ -31,10 +33,15 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
 
-[node name="ReloadSpeedTimer" type="Timer" parent="." index="4" unique_id=1392139072]
+[node name="RegenerationTimer" type="Timer" parent="." index="4" unique_id=1505157930]
+wait_time = 5.0
+autostart = true
+
+[node name="ReloadSpeedTimer" type="Timer" parent="." index="5" unique_id=1392139072]
 wait_time = 0.5
 
-[node name="StatsManager" type="Node" parent="." index="5" unique_id=761570750]
+[node name="StatsManager" type="Node" parent="." index="6" unique_id=761570750]
 script = ExtResource("4_bls4j")
 
+[connection signal="timeout" from="RegenerationTimer" to="." method="_on_regeneration_timer_timeout"]
 [connection signal="timeout" from="ReloadSpeedTimer" to="." method="_on_reload_speed_timer_timeout"]

@@ -2,7 +2,9 @@ class_name Player
 extends Entity
 
 @onready var reload_speed_timer: Timer = $ReloadSpeedTimer
+@onready var regeneration_timer: Timer = $RegenerationTimer
 @export var bullet: PackedScene
+var regeneration_amount: float = 1
 
 signal hp_changed(new_hp: int, max_hp: int)
 
@@ -42,4 +44,6 @@ func take_damage(amount: float) -> void:
 	super.take_damage(amount)
 	emit_signal("hp_changed", current_hp, max_health)
 
-
+func _on_regeneration_timer_timeout() -> void:
+	current_hp = min(current_hp + regeneration_amount, max_health)
+	emit_signal("hp_changed", current_hp, max_health)

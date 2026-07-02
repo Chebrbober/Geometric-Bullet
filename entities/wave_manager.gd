@@ -23,6 +23,7 @@ var enemies_to_kill: int = 0:
 			_complete_wave()
 
 var spawnable_enemy_index: int = 0
+var speed_multiplier: float = 1.05
 
 signal wave_started(wave_number)
 signal wave_completed(wave_number)
@@ -68,6 +69,7 @@ func _complete_wave() -> void:
 			_add_spawnable_enemy(enemy_types[spawnable_enemy_index])
 
 	Global.current_wave += 1
+	Engine.time_scale *= speed_multiplier
 	_start_new_wave()
 
 func _get_wave_config() -> Dictionary:

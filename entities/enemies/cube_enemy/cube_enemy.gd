@@ -25,11 +25,15 @@ func attack() -> void:
 			attack_timer.start()
 
 func move() -> void:
-	var direction = to_local(nav_agent.get_next_path_position()).normalized()
-	if target != null:
-		velocity = direction * speed
-		polygon2d.rotation = direction.angle()
+	if target == null:
+		return
+
+	var direction = (nav_agent.get_next_path_position() - global_position).normalized()
+	velocity = direction * speed
 	move_and_slide()
+
+	if velocity.length() > 0.01:
+		rotation = lerp_angle(rotation, velocity.angle(), 0.2)
 
 func makepath() -> void:
 	nav_agent.target_position = target.global_position
