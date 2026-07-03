@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bo53s6r3ew2pw" path="res://entities/player/bullet/bullet.tscn" id="2_abrql"]
 [ext_resource type="Script" uid="uid://chqw1lp3lywgi" path="res://entities/player/stats_manager.gd" id="4_bls4j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfe5m"]
-size = Vector2(18, 18)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jx1tm"]
 
 [node name="Player" unique_id=1118549784 instance=ExtResource("1_abrql")]
 collision_mask = 15
@@ -14,8 +13,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_symyc")
 bullet = ExtResource("2_abrql")
-regeneration_amount = 1.0
-regeneration_interval = null
 speed = 100.0
 max_health = 100.0
 damage = 1.0
@@ -25,7 +22,7 @@ color = Color(0, 0.6627451, 1, 1)
 polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=2031196477]
-shape = SubResource("RectangleShape2D_rfe5m")
+shape = SubResource("CircleShape2D_jx1tm")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=1592504992]
 zoom = Vector2(2, 2)

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://7ewcpdm3yp66"]
+
+[ext_resource type="PackedScene" uid="uid://biiyui48anhd" path="res://entities/enemies/cube_enemy/mini_cube_enemy.tscn" id="1_ddd3q"]
+[ext_resource type="Script" uid="uid://b1eh8qh68b7vn" path="res://entities/enemies/cube_enemy/mini_kamikadze_enemy.gd" id="2_fjn4n"]
+[ext_resource type="PackedScene" uid="uid://dd3ce33kswqvr" path="res://entities/boom_particles.tscn" id="3_iwvdb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwvdb"]
+resource_local_to_scene = true
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo5lq"]
+radius = 28.0
+
+[node name="MiniKamikadzeEnemy" unique_id=1118549784 instance=ExtResource("1_ddd3q")]
+script = ExtResource("2_fjn4n")
+boom_particles = ExtResource("3_iwvdb")
+damage = 15.0
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2031196477]
+shape = SubResource("CircleShape2D_iwvdb")
+
+[node name="AttackArea" parent="." index="3" unique_id=158472716]
+monitoring = false
+monitorable = false
+
+[node name="Polygon2D2" type="Polygon2D" parent="." index="6" unique_id=526772235]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-2, -2, -2, 2, 2, 2, 2, -2)
+
+[node name="BeepLight" type="Polygon2D" parent="." index="7" unique_id=2096461554]
+unique_name_in_owner = true
+color = Color(0.9607843, 0, 0, 1)
+polygon = PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1)
+
+[node name="BoomTimer" type="Timer" parent="." index="8" unique_id=1894841367]
+wait_time = 0.5
+
+[node name="ExplosionArea" type="Area2D" parent="." index="9" unique_id=664944401]
+collision_mask = 3
+
+[node name="ExplosionCollision" type="CollisionShape2D" parent="ExplosionArea" index="0" unique_id=1622760694]
+shape = SubResource("CircleShape2D_jo5lq")
+debug_color = Color(0.9919298, 0, 0.26519278, 0.41960785)
+
+[connection signal="timeout" from="BoomTimer" to="." method="_on_boom_timer_timeout"]
+[connection signal="body_shape_entered" from="ExplosionArea" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="ExplosionArea" to="." method="_on_area_2d_body_shape_exited"]

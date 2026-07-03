@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dd3ce33kswqvr"]
+
+[sub_resource type="Curve" id="Curve_fgd07"]
+_data = [Vector2(0.008408725, 0.988808), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_jo5lq"]
+offsets = PackedFloat32Array(0, 0.46948838, 1)
+colors = PackedColorArray(1, 0.44705883, 0, 1, 0.7898947, 0.59394944, 0.040436186, 1, 0.06471269, 0.06471268, 0.06471268, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=1749936899]
+amount = 250
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.18
+initial_velocity_max = 400.0
+angular_velocity_min = 14.06
+angular_velocity_max = 183.47
+radial_accel_min = 1.0
+radial_accel_max = 2.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_fgd07")
+color_ramp = SubResource("Gradient_jo5lq")
+color_initial_ramp = SubResource("Gradient_jo5lq")
+hue_variation_min = 0.11
+hue_variation_max = 0.51

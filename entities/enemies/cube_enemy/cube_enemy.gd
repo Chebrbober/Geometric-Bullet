@@ -18,14 +18,20 @@ func die() -> void:
 	wave_manager.enemies_to_kill -= 1
 
 func attack() -> void:
-	for body in bodies_in_area:
+	if not is_instance_valid(target):
+		return
+
+	for body in bodies_in_area.duplicate():
+		if not is_instance_valid(body):
+			bodies_in_area.erase(body)
+			continue
 		if body == target and can_attack:
 			target.take_damage(damage)
 			can_attack = false
 			attack_timer.start()
 
 func move() -> void:
-	if target == null:
+	if not is_instance_valid(target):
 		return
 
 	var direction = (nav_agent.get_next_path_position() - global_position).normalized()
@@ -36,6 +42,9 @@ func move() -> void:
 		rotation = lerp_angle(rotation, velocity.angle(), 0.2)
 
 func makepath() -> void:
+	if not is_instance_valid(target):
+		return
+
 	nav_agent.target_position = target.global_position
 
 func _on_attack_timer_timeout() -> void:

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://biiyui48anhd" path="res://entities/enemies/cube_enemy/mini_cube_enemy.tscn" id="8_u4cnq"]
 [ext_resource type="PackedScene" uid="uid://6r26cclrysn" path="res://stages/game/upgrade_screen.tscn" id="9_jiu16"]
 [ext_resource type="PackedScene" uid="uid://bl8r4tcto1oal" path="res://entities/health_bar.tscn" id="10_pteoa"]
+[ext_resource type="PackedScene" uid="uid://7ewcpdm3yp66" path="res://entities/enemies/cube_enemy/mini_kamikadze_enemy.tscn" id="11_jx1tm"]
 
 [sub_resource type="Environment" id="Environment_0hxrk"]
 background_mode = 3
@@ -124,7 +125,6 @@ points = PackedVector2Array(5, 251, 251, 251, 251, 5, 5, 5)
 closed = true
 
 [node name="UpgradeScreen" parent="CanvasLayer" unique_id=1168584678 instance=ExtResource("9_jiu16")]
-process_mode = 3
 visible = false
 top_level = true
 anchors_preset = 15
@@ -138,9 +138,7 @@ grow_vertical = 2
 [node name="WaveManager" type="Node" parent="." unique_id=2082375003]
 unique_name_in_owner = true
 script = ExtResource("7_nukx0")
-starting_wave = null
-initial_spawn_interval = null
-enemy_types = Array[PackedScene]([ExtResource("5_6gq3l"), ExtResource("8_u4cnq")])
+enemy_types = Array[PackedScene]([ExtResource("5_6gq3l"), ExtResource("8_u4cnq"), ExtResource("11_jx1tm")])
 spawnable_enemies = Array[PackedScene]([ExtResource("5_6gq3l")])
 
 [connection signal="wave_completed" from="WaveManager" to="." method="_on_wave_completed"]

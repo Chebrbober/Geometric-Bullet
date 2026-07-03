@@ -10,10 +10,9 @@ radius = 3.0
 radius = 4.0
 
 [node name="MiniCubeEnemy" unique_id=1118549784 instance=ExtResource("1_njewc")]
-spawn_rate = 0.8
 speed = 90.0
-max_health = 7
-damage = 2
+max_health = 7.0
+damage = 2.0
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 position = Vector2(4, 4)
