@@ -64,7 +64,7 @@ font_size = 32
 [node name="Arena" type="Node2D" unique_id=1772455464]
 script = ExtResource("1_0hxrk")
 
-[node name="Player" parent="." unique_id=1118549784 instance=ExtResource("1_ss5j8")]
+[node name="Player" parent="." unique_id=1121459620 instance=ExtResource("1_ss5j8")]
 unique_name_in_owner = true
 z_index = 0
 position = Vector2(640, 480)

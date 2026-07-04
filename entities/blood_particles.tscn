@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b6q11vkxtij4u" path="res://entities/blood_particles.gd" id="2_p6ny3"]
 
 [node name="BloodParticles" type="CPUParticles2D" unique_id=583339663]
+visibility_layer = 2
 amount = 20
 texture = ExtResource("1_nbij3")
 lifetime = 0.4
