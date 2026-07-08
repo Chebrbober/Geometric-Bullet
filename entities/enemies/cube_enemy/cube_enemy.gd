@@ -7,6 +7,16 @@ class_name CubeEnemy extends Entity
 @onready var wave_manager: WaveManager = get_parent().get_node("WaveManager")
 var can_attack = true
 var bodies_in_area = []
+var is_dying: bool = false
+
+signal enemy_died(enemy: CubeEnemy)
+
+func _ready() -> void:
+	super._ready()
+	if is_instance_valid(wave_manager):
+		enemy_died.connect(wave_manager._on_enemy_died)
+	else:
+		push_error("CubeEnemy: wave_manager not found! Enemy death tracking will fail.")
 
 func _physics_process(delta: float) -> void:
 	attack()
@@ -14,8 +24,14 @@ func _physics_process(delta: float) -> void:
 	makepath()
 
 func die() -> void:
+	if is_dying:
+		return
+
+	is_dying = true
+	emit_signal("enemy_died", self)
+	Global.score += 1
+	Global.score_changed.emit(Global.score)
 	super.die()
-	wave_manager.enemies_to_kill -= 1
 
 func attack() -> void:
 	if not is_instance_valid(target):

@@ -6,7 +6,6 @@ class_name MiniKamikadzeEnemy extends CubeEnemy
 var is_player_in_area: bool = false
 var entities_in_area: Array[Entity] = []
 var freeze: bool = false
-var is_dying: bool = false
 
 
 func _physics_process(delta: float) -> void:
@@ -49,7 +48,6 @@ func beep() -> void:
 func die():
 	if is_dying:
 		return
-	is_dying = true
 
 	if Global.node_creation_parent != null:
 		Global.instance_node(boom_particles, global_position, Global.node_creation_parent)

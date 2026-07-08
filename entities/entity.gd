@@ -31,8 +31,6 @@ func die() -> void:
 		var blood_particles_instance = Global.instance_node(blood_particles, global_position, Global.node_creation_parent)
 		blood_particles_instance.color = native_color
 		blood_particles_instance.rotation = velocity.angle()
-	Global.score += 1
-	Global.score_changed.emit(Global.score)
 	queue_free()
 
 func _on_stun_timer_timeout() -> void:

@@ -6,6 +6,7 @@
 [node name="Entity" type="CharacterBody2D" unique_id=1118549784]
 top_level = true
 z_index = 2
+collision_priority = 3.0
 script = ExtResource("1_jm4vq")
 blood_particles = ExtResource("2_ep4xq")
 

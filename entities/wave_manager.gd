@@ -71,6 +71,7 @@ func _complete_wave() -> void:
 	Global.current_wave += 1
 	Engine.time_scale *= speed_multiplier
 	_start_new_wave()
+	Global.emit_signal("wave_changed", Global.current_wave)
 
 func _get_wave_config() -> Dictionary:
 	return {
@@ -81,3 +82,9 @@ func _get_wave_config() -> Dictionary:
 func _add_spawnable_enemy(enemy_scene: PackedScene) -> void:
 	if enemy_scene not in spawnable_enemies:
 		spawnable_enemies.append(enemy_scene)
+
+func _on_enemy_died(enemy: Node) -> void:
+	if is_instance_valid(enemy):
+		enemies_to_kill -= 1
+	else:
+		push_warning("WaveManager: Enemy node became invalid")
