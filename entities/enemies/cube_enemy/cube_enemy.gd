@@ -1,6 +1,5 @@
 class_name CubeEnemy extends Entity
 
-@export var spawn_rate: float = 1.0
 @export var target: CharacterBody2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer

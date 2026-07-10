@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://db7fr60ijddnm"]
+
+[ext_resource type="PackedScene" uid="uid://m14ui5weian5" path="res://entities/enemies/cube_enemy/cube_enemy.tscn" id="1_thxwd"]
+[ext_resource type="Script" uid="uid://cu1kfwgv5fxkj" path="res://entities/enemies/boss_hexagon/boss_hexagon.gd" id="2_myi0f"]
+[ext_resource type="Script" uid="uid://yq4rslmbkt20" path="res://entities/enemies/boss_hexagon/laser_beam.gd" id="3_6qhyd"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2nrvn"]
+points = PackedVector2Array(-46, 0, -23, -38, 23, -38, 46, 0, 23, 38, -23, 38)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jqe5u"]
+points = PackedVector2Array(-46, 0, -23, -38, 23, -38, 46, 0, 23, 38, -23, 38)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo5lq"]
+radius = 73.109505
+
+[sub_resource type="Animation" id="Animation_4xvvl"]
+resource_name = "damage_impulse"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m64cg"]
+_data = {
+&"damage_impulse": SubResource("Animation_4xvvl")
+}
+
+[sub_resource type="Curve" id="Curve_m64cg"]
+_data = [Vector2(0.004441552, 1), 0.0, 0.0, 0, 0, Vector2(0.99554396, 0.95203125), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6qhyd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5819785, 1), 0.0, 0.0, 0, 0, Vector2(0.9927858, 0.020233512), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6qhyd"]
+curve = SubResource("Curve_6qhyd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jo5lq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 2.9999976
+linear_accel_max = 9.999997
+scale_min = 7.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_6qhyd")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.09999997
+
+[sub_resource type="Curve" id="Curve_4xvvl"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.5022049, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00899756), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_m64cg"]
+curve = SubResource("Curve_4xvvl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dguew"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1596.7612, 1, 1)
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 99.99999
+tangential_accel_max = 99.99999
+scale_min = 5.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_m64cg")
+
+[node name="BossHexagon" unique_id=1118549784 instance=ExtResource("1_thxwd")]
+script = ExtResource("2_myi0f")
+speed = 30.0
+max_health = 1000.0
+damage = 35.0
+
+[node name="Polygon2D" parent="." index="0" unique_id=1340460375]
+polygon = PackedVector2Array(23.99997, -40.000004, -24, -40.000004, -47.999985, 0, -24, 40, 23.999985, 40, 47.999985, 0)
+uv = PackedVector2Array(64.00003, -15.999996, 0, 24, 0, 64, 64.00003, 96.000015, 135.99997, 72, 135.99997, 24)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2031196477]
+shape = SubResource("ConvexPolygonShape2D_2nrvn")
+
+[node name="CollisionShape2D" parent="AttackArea" parent_id_path=PackedInt32Array(158472716) index="0" unique_id=1921863181]
+shape = SubResource("ConvexPolygonShape2D_jqe5u")
+
+[node name="Area2D" type="Area2D" parent="." index="6" unique_id=655157236]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=351395125]
+shape = SubResource("CircleShape2D_jo5lq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=768109256]
+libraries/ = SubResource("AnimationLibrary_m64cg")
+
+[node name="LaserBeam" type="RayCast2D" parent="." index="8" unique_id=830527194]
+unique_name_in_owner = true
+rotation = -6.304129
+target_position = Vector2(1955.1116, 4740.796)
+collision_mask = 15
+script = ExtResource("3_6qhyd")
+
+[node name="Line2D" type="Line2D" parent="LaserBeam" index="0" unique_id=231424594]
+points = PackedVector2Array(0, 0, 1955.1116, 4740.796)
+width_curve = SubResource("Curve_m64cg")
+default_color = Color(1, 0.7019608, 0.654902, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="CastingParticles" type="GPUParticles2D" parent="LaserBeam" index="1" unique_id=1714107984]
+modulate = Color(1, 0.7019608, 0.654902, 1)
+lifetime = 0.5
+speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_jo5lq")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="LaserBeam" index="2" unique_id=1304021132]
+modulate = Color(1, 0.7019608, 0.654902, 1)
+position = Vector2(977.5558, 2370.398)
+rotation = 1.1815879
+amount = 24
+lifetime = 0.5
+speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_dguew")

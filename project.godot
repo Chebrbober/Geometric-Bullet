@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Cactopon"
+config/name="Geometric-Bullet"
 run/main_scene="uid://b5ayew4bavuqw"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
