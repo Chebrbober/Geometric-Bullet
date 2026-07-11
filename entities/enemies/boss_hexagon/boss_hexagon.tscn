@@ -13,11 +13,160 @@ points = PackedVector2Array(-46, 0, -23, -38, 23, -38, 46, 0, 23, 38, -23, 38)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jo5lq"]
 radius = 73.109505
 
+[sub_resource type="Animation" id="Animation_6qhyd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserBeam:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserBeam/Line2D:width")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserBeam/Line2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserBeam:is_casting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_4xvvl"]
 resource_name = "damage_impulse"
+length = 10.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:speed")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserBeam:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.76, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserBeam/Line2D:width")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7615785, 0.99999994, 9.888804, 10.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 10.0, 10.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserBeam/Line2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.76, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserBeam:is_casting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.76, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m64cg"]
 _data = {
+&"RESET": SubResource("Animation_6qhyd"),
 &"damage_impulse": SubResource("Animation_4xvvl")
 }
 
@@ -67,9 +216,9 @@ scale_curve = SubResource("CurveTexture_m64cg")
 
 [node name="BossHexagon" unique_id=1118549784 instance=ExtResource("1_thxwd")]
 script = ExtResource("2_myi0f")
-speed = 30.0
+speed = 0.0
 max_health = 1000.0
-damage = 35.0
+damage = 5.0
 
 [node name="Polygon2D" parent="." index="0" unique_id=1340460375]
 polygon = PackedVector2Array(23.99997, -40.000004, -24, -40.000004, -47.999985, 0, -24, 40, 23.999985, 40, 47.999985, 0)
@@ -81,6 +230,9 @@ shape = SubResource("ConvexPolygonShape2D_2nrvn")
 [node name="CollisionShape2D" parent="AttackArea" parent_id_path=PackedInt32Array(158472716) index="0" unique_id=1921863181]
 shape = SubResource("ConvexPolygonShape2D_jqe5u")
 
+[node name="AttackTimer" parent="." index="5" unique_id=1854231651]
+wait_time = 0.25
+
 [node name="Area2D" type="Area2D" parent="." index="6" unique_id=655157236]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=351395125]
@@ -91,29 +243,32 @@ libraries/ = SubResource("AnimationLibrary_m64cg")
 
 [node name="LaserBeam" type="RayCast2D" parent="." index="8" unique_id=830527194]
 unique_name_in_owner = true
-rotation = -6.304129
-target_position = Vector2(1955.1116, 4740.796)
+visible = false
+target_position = Vector2(3646, -0.00063748687)
 collision_mask = 15
 script = ExtResource("3_6qhyd")
+is_casting = true
 
 [node name="Line2D" type="Line2D" parent="LaserBeam" index="0" unique_id=231424594]
-points = PackedVector2Array(0, 0, 1955.1116, 4740.796)
+points = PackedVector2Array(0, 0, 3646, -0.00063748687)
+width = 0.0
 width_curve = SubResource("Curve_m64cg")
-default_color = Color(1, 0.7019608, 0.654902, 1)
+default_color = Color(1, 0.7137255, 0.70980394, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="CastingParticles" type="GPUParticles2D" parent="LaserBeam" index="1" unique_id=1714107984]
-modulate = Color(1, 0.7019608, 0.654902, 1)
+modulate = Color(1, 0.7137255, 0.70980394, 1)
 lifetime = 0.5
 speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_jo5lq")
 
 [node name="BeamParticles" type="GPUParticles2D" parent="LaserBeam" index="2" unique_id=1304021132]
-modulate = Color(1, 0.7019608, 0.654902, 1)
-position = Vector2(977.5558, 2370.398)
-rotation = 1.1815879
+modulate = Color(1, 0.7137255, 0.70980394, 1)
+position = Vector2(1823, -0.00031874343)
 amount = 24
 lifetime = 0.5
 speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_dguew")
+
+[connection signal="laser_hit" from="LaserBeam" to="." method="_on_laser_beam_laser_hit"]

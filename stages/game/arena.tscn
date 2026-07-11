@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://6r26cclrysn" path="res://stages/game/upgrade_screen.tscn" id="9_jiu16"]
 [ext_resource type="PackedScene" uid="uid://bl8r4tcto1oal" path="res://entities/health_bar.tscn" id="10_pteoa"]
 [ext_resource type="PackedScene" uid="uid://7ewcpdm3yp66" path="res://entities/enemies/cube_enemy/mini_kamikadze_enemy.tscn" id="11_jx1tm"]
+[ext_resource type="PackedScene" uid="uid://db7fr60ijddnm" path="res://entities/enemies/boss_hexagon/boss_hexagon.tscn" id="12_wkif2"]
 
 [sub_resource type="Environment" id="Environment_0hxrk"]
 background_mode = 3
@@ -146,6 +147,9 @@ unique_name_in_owner = true
 script = ExtResource("7_nukx0")
 enemy_types = Array[PackedScene]([ExtResource("5_6gq3l"), ExtResource("8_u4cnq"), ExtResource("11_jx1tm")])
 spawnable_enemies = Array[PackedScene]([ExtResource("5_6gq3l")])
+
+[node name="BossHexagon" parent="." unique_id=1118549784 instance=ExtResource("12_wkif2")]
+position = Vector2(390, 143)
 
 [connection signal="wave_completed" from="WaveManager" to="." method="_on_wave_completed"]
 [connection signal="wave_started" from="WaveManager" to="." method="_on_wave_started"]
